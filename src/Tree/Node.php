@@ -169,7 +169,7 @@ class Node implements \JsonSerializable
      */
     public function get($name)
     {
-        $lowerName = strtolower($name);
+        $lowerName = ($name);
         if (isset($this->properties[$lowerName])) {
             return $this->properties[$lowerName];
         }
@@ -188,7 +188,7 @@ class Node implements \JsonSerializable
      */
     public function __call($name, $args)
     {
-        $lowerName = strtolower($name);
+        $lowerName = ($name);
         if (0 === strpos($lowerName, 'get')) {
             $property = substr($lowerName, 3);
             if (array_key_exists($property, $this->properties)) {
@@ -210,7 +210,7 @@ class Node implements \JsonSerializable
         if ('parent' === $name || 'children' === $name) {
             return $this->$name;
         }
-        $lowerName = strtolower($name);
+        $lowerName = ($name);
         if (array_key_exists($lowerName, $this->properties)) {
             return $this->properties[$lowerName];
         }
@@ -228,7 +228,7 @@ class Node implements \JsonSerializable
     {
         return 'parent' === $name ||
                'children' === $name ||
-               array_key_exists(strtolower($name), $this->properties);
+               array_key_exists(($name), $this->properties);
     }
 
     /**
