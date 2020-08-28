@@ -38,7 +38,7 @@ class Node implements \JsonSerializable
      */
     public function __construct($id, $parent, array $properties = [])
     {
-        $this->properties = array_change_key_case($properties, CASE_LOWER);
+        $this->properties = $properties;//array_change_key_case($properties, CASE_LOWER);
         unset($this->properties['id'], $this->properties['parent']);
         $this->properties['id'] = $id;
         $this->properties['parent'] = $parent;
